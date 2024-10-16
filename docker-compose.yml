@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - '3000:3000'
+    environment:
+      - DATABASE_HOST=db
+      - DATABASE_PORT=5432
+      - DATABASE_USER=postgres
+      - DATABASE_PASSWORD=postgres
+      - DATABASE_NAME=crypto_db
+      - MORALIS_API_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub25jZSI6IjBkZTliZGM3LTMwODEtNGZkYi1hYTU4LWE1ZDIzOTJjZTA5OSIsIm9yZ0lkIjoiMzQzNzU5IiwidXNlcklkIjoiMzUzMzgzIiwidHlwZUlkIjoiZWJlOTBiZWYtMGRhMC00ZGQwLTllY2ItY2M5NDAzMGEwNDBkIiwidHlwZSI6IlBST0pFQ1QiLCJpYXQiOjE2ODY4OTM3MDYsImV4cCI6NDg0MjY1MzcwNn0.awUa6JuIvLL-kdZGhPuJUNmirMhJ-8helTkFuZqNtK8
+      - EMAIL_USER=jhonpatel1612@gmail.com
+      - EMAIL_PASS=nzxv lbnq gyqk yepp
+    depends_on:
+      - db
+
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: crypto_db
+    ports:
+      - '5432:5432' 
